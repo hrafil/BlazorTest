@@ -1,0 +1,22 @@
+﻿@page "/randomthings"
+@inherits RandomThingsBase
+
+<h1>RandomThings</h1>
+<hr />
+
+<h3>Random number generator</h3>
+
+<p>Number: @GeneratedNumber</p>
+
+<EditForm Model="@RandomNumberRangeModel" OnValidSubmit="@HandleRandomNumberSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <InputNumber id="numberFrom" @bind-Value="RandomNumberRangeModel.From" />
+    <InputNumber id="numberTo" @bind-Value="RandomNumberRangeModel.To" />
+
+    <button class="btn btn-primary" type="submit">Generate random number</button>
+
+</EditForm>
+
+@code {}
