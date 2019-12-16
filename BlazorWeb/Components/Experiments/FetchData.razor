@@ -1,0 +1,58 @@
+﻿@namespace BlazorWeb.Components.Experiments
+@inject HttpClient Http
+
+<div class="col-12">
+    <h3>Předpověď počasí</h3>
+
+    <p>Komponenta demonstruje získávání dat ze serveru.</p>
+
+    @if (forecasts == null)
+    {
+        <p><em>Načítám...</em></p>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Datum</th>
+                    <th>Teplota. (C)</th>
+                    <th>Teplota. (F)</th>
+                    <th>Výsledek</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var forecast in forecasts)
+                {
+                    <tr>
+                        <td>@forecast.Date.ToShortDateString()</td>
+                        <td>@forecast.TemperatureC</td>
+                        <td>@forecast.TemperatureF</td>
+                        <td>@forecast.Summary</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+
+@code {
+    private WeatherForecast[] forecasts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        forecasts = await Http.GetJsonAsync<WeatherForecast[]>("sample-data/weather.json");
+    }
+
+    public class WeatherForecast
+    {
+        public DateTime Date { get; set; }
+
+        public int TemperatureC { get; set; }
+
+        public string Summary { get; set; }
+
+        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    }
+}

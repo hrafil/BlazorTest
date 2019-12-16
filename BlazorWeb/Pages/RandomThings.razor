@@ -1,21 +1,31 @@
 ﻿@page "/randomthings"
 @inherits RandomThingsBase
 
-<h1>RandomThings</h1>
+<h1>Náhodné věci</h1>
 <hr />
 
-<h3>Random number generator</h3>
-
-<p>Number: @GeneratedNumber</p>
+<h3>Generátor náhodných čísel</h3>
 
 <EditForm Model="@RandomNumberRangeModel" OnValidSubmit="@HandleRandomNumberSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
 
-    <InputNumber id="numberFrom" @bind-Value="RandomNumberRangeModel.From" />
-    <InputNumber id="numberTo" @bind-Value="RandomNumberRangeModel.To" />
+    <div class="form-group">
+        <label for="numberFrom">Číslo od</label>
+        <InputNumber class="form-control" id="numberFrom" @bind-Value="RandomNumberRangeModel.From" required />
+    </div>
 
-    <button class="btn btn-primary" type="submit">Generate random number</button>
+    <div class="form-group">
+        <label for="numberFrom">Číslo do</label>
+        <InputNumber class="form-control" id="numberTo" @bind-Value="RandomNumberRangeModel.To" required />
+    </div>
+
+    <div class="form-group">
+        <label for="numberResult">Výsledek</label>
+        <InputNumber class="form-control" id="numberResult" @bind-Value="GeneratedNumber" readonly />
+    </div>
+
+    <button class="btn btn-primary" type="submit">Vygenerovat náhodné číslo</button>
 
 </EditForm>
 

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace BlazorWeb.Pages
+namespace BlazorWeb.Components.Experiments
 {
     public class CounterBase : ComponentBase
     {

@@ -11,7 +11,7 @@ namespace BlazorWeb.Models.RandomThings
 
         [Required]
         [Range(0, int.MaxValue, ErrorMessage = "Please enter valid positive integer Number")]
-        public int To { get; set; }
+        public int To { get; set; } = 100;
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

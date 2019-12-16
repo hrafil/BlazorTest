@@ -1,37 +1,70 @@
 ﻿@page "/utilities"
-@inherits RandomThingsBase
+@inherits UtilitiesBase
 
 <h1>Nástroje</h1>
 <hr />
 
-<h3>Base64 decode</h3>
+<div class="row mb-3">
 
-<p>Number: @GeneratedNumber</p>
+    <div class="col-12">
+        <h3>Base64 encode</h3>
 
-<EditForm Model="@RandomNumberRangeModel" OnValidSubmit="@HandleRandomNumberSubmit">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
+        <EditForm Model="@Base64EncodeModel" OnValidSubmit="@HandleBase64EncodeSubmit">
+            <DataAnnotationsValidator />
 
-    <InputNumber id="numberFrom" @bind-Value="RandomNumberRangeModel.From" />
-    <InputNumber id="numberTo" @bind-Value="RandomNumberRangeModel.To" />
+            <div class="form-group">
+                <label for="encodeInput">Řetězec k zakódování</label>
+                <InputText class="form-control" id="encodeInput" @bind-Value="Base64EncodeModel.Input" required />
+                <div class="form-control-validation">
+                    <ValidationMessage For="@(() => Base64EncodeModel.Input)" />
+                </div>
+            </div>
 
-    <button class="btn btn-primary" type="submit">Generate random number</button>
+            <div class="form-group">
+                <label for="encodeOutput">Výsledek</label>
+                <InputText class="form-control" id="encodeOutput" @bind-Value="Base64EncodeModel.Output" readonly />
+            </div>
 
-</EditForm>
+            <div class="form-row">
+                <div class="col-sm-12 form-group d-flex justify-content-center justify-content-sm-start">
+                    <button class="btn btn-primary mr-2" type="submit">Zakódovat řetězec</button>
+                    <button class="btn btn-secondary"  type="button" @onclick="CopyEncodedToClipboard">Zkopírovat do schránky</button>
+                </div>
+            </div>
+        </EditForm>
+    </div>
+</div>
 
-<h3>Base64 encode</h3>
+<div class="row mb-3">
 
-<p>Number: @GeneratedNumber</p>
+    <div class="col-12">
+        <h3>Base64 decode</h3>
 
-<EditForm Model="@RandomNumberRangeModel" OnValidSubmit="@HandleRandomNumberSubmit">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
+        <EditForm Model="@Base64DecodeModel" OnValidSubmit="@HandleBase64DecodeSubmit">
+            <DataAnnotationsValidator />
 
-    <InputNumber id="numberFrom" @bind-Value="RandomNumberRangeModel.From" />
-    <InputNumber id="numberTo" @bind-Value="RandomNumberRangeModel.To" />
+            <div class="form-group">
+                <label for="decodeInput">Řetězec k dekódování</label>
+                <InputText class="form-control" id="decodeInput" @bind-Value="Base64DecodeModel.Input" required />
+                <div class="form-control-validation">
+                    <ValidationMessage For="@(() => Base64DecodeModel.Input)" />
+                </div>
+            </div>
 
-    <button class="btn btn-primary" type="submit">Generate random number</button>
+            <div class="form-group">
+                <label for="decodeOutput">Výsledek</label>
+                <InputText class="form-control" id="decodeOutput" @bind-Value="Base64DecodeModel.Output" readonly />
+            </div>
 
-</EditForm>
+            <div class="form-row">
+                <div class="col-sm-12 form-group d-flex justify-content-center justify-content-sm-start">
+                    <button class="btn btn-primary mr-2" type="submit">Dekódovat řetězec</button>
+                    <button class="btn btn-secondary" type="button" @onclick="CopyDecodedToClipboard">Zkopírovat do schránky</button>
+                </div>
+            </div>
+        </EditForm>
+
+    </div>
+</div>
 
 @code {}
