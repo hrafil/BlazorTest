@@ -3,9 +3,21 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RazorLangVersion>3.0</RazorLangVersion>
+    
+    <!--PWA věci-->
+    <ManifestShortName>BlazFilWeb</ManifestShortName>
+    <ManifestLongName>Blazing HrafilWeb</ManifestLongName>
+    <ServiceWorkerCacheVersion>8</ServiceWorkerCacheVersion>
+    <ServiceWorkerForce>true</ServiceWorkerForce>
+    <ServiceWorkerRegisterInstallableType>installable-blazor</ServiceWorkerRegisterInstallableType>
+    <!--<ServiceWorkerIgnoreHosts>'localhost','127.0.0.1','::1'</ServiceWorkerIgnoreHosts>-->
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BlazorPWA.MSBuild" Version="1.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="CurrieTechnologies.Razor.Clipboard" Version="1.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Blazor" Version="3.1.0-preview3.19555.2" />
     <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="3.1.0-preview3.19555.2" PrivateAssets="all" />

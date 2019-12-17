@@ -191,3 +191,18 @@ app {
         display: block;
     }
 }
+
+/*PWA*/
+
+.install-prompt {
+    background-color: #1d1e22;
+    color: #fff;
+    position: fixed;
+    bottom: 0.5rem;
+    padding: 0.5rem;
+    display: flex;
+    font-size: 1.5rem;
+    border-radius: .25rem;
+    z-index: 99;
+    width: 19rem;
+}

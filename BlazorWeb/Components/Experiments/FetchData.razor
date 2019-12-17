@@ -12,27 +12,29 @@
     }
     else
     {
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Datum</th>
-                    <th>Teplota. (C)</th>
-                    <th>Teplota. (F)</th>
-                    <th>Výsledek</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var forecast in forecasts)
-                {
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
                     <tr>
-                        <td>@forecast.Date.ToShortDateString()</td>
-                        <td>@forecast.TemperatureC</td>
-                        <td>@forecast.TemperatureF</td>
-                        <td>@forecast.Summary</td>
+                        <th>Datum</th>
+                        <th>Teplota. (C)</th>
+                        <th>Teplota. (F)</th>
+                        <th>Výsledek</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var forecast in forecasts)
+                    {
+                        <tr>
+                            <td>@forecast.Date.ToShortDateString()</td>
+                            <td>@forecast.TemperatureC</td>
+                            <td>@forecast.TemperatureF</td>
+                            <td>@forecast.Summary</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     }
 </div>
 
